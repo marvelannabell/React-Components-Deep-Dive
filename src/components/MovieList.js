@@ -3,6 +3,7 @@ import React from "react";
 
 export default function MovieList({
     movies,
+    onMovieDel,
 }) {
     //1. If we pass one movie
 
@@ -24,7 +25,7 @@ export default function MovieList({
     // )
 
     // 2.if we pass more than one movie
-    
+
     // return[
     //     <Movie {...movies[0]} />,
     //     <Movie {...movies[1]} />,
@@ -59,7 +60,7 @@ export default function MovieList({
   
     return (
         <ul>
-            {movies.map(x => (<li><Movie {...x} /></li>))}
+            {movies.map(x => (<li  key={x.id}><Movie {...x} onMovieDel={onMovieDel}/></li>))}
         </ul>
     )
 };
