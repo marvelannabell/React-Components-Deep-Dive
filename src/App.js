@@ -1,7 +1,8 @@
 
+import { useState } from 'react';
 import './App.css';
 import MovieList from './components/MovieList';
- const movies= [
+const moviesData = [
   {
     id: 1,
     title: 'Star Wars: The Last Jedi',
@@ -36,11 +37,16 @@ import MovieList from './components/MovieList';
   }
 ]
 function App() {
+  const [movies, setMovies] = useState(moviesData)
+
+  const onMovieDel = (id) => {
+setMovies(state=>state.filter(x=> x.id !==id))
+  }
   return (
     <div >
       <h1>Movie Collection</h1>
-      <MovieList  movies={movies} />
-      
+      <MovieList movies={movies} onMovieDel={onMovieDel}/>
+
     </div>
   );
 }
