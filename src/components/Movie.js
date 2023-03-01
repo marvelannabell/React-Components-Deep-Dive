@@ -1,3 +1,5 @@
+import { useEffect } from "react"
+
 export default function Movie({
     id,
     title,
@@ -6,8 +8,16 @@ export default function Movie({
     poster,
     genre,
     onMovieDel
-}){
-    return(
+}) {
+    useEffect(() => {
+        console.log(`Movie ${title} - mounted`);
+
+        return () => {
+            console.log(`Movie ${title} - unmounted`);
+        }
+    }, []);
+ 
+    return (
         <article>
             <h3>{title}, {year}</h3>
             <main>
@@ -16,7 +26,7 @@ export default function Movie({
             </main>
             <footer>
                 <p>{genre}</p>
-                <button onClick={()=>onMovieDel(id)}>Delete</button>
+                <button onClick={() => onMovieDel(id)}>Delete</button>
             </footer>
         </article>
     )
